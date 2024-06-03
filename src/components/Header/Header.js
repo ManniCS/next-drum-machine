@@ -6,11 +6,12 @@ import VisuallyHidden from '../VisuallyHidden';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import styles from './Header.module.css';
 
+import { useMuteContext } from '../MuteContextProvider';
+
 function Header() {
   const id = React.useId();
 
-  // TODO: Global state?
-  const soundEnabled = true;
+  const {soundEnabled, toggleSoundEnabled} = useMuteContext() 
 
   return (
     <header className={styles.wrapper}>
@@ -21,7 +22,7 @@ function Header() {
 
         <button
           onClick={() => {
-            // TODO: flip `soundEnabled`
+            toggleSoundEnabled()
           }}
         >
           {soundEnabled ? (
